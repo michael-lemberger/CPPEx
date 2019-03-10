@@ -56,5 +56,5 @@ rm valgrind.txt
 rm helgrind.txt
 cd - > "/dev/null"
 
-echo $output
+exit $output
 
