@@ -52,7 +52,7 @@ echo "   FAIL      FAIL	      FAIL"
 fi
 fi
 
-if [$output -ne 7];then
+if [ $output -ne 7 ];then
 rm valgrind.txt
 rm helgrind.txt
 fi
