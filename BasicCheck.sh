@@ -52,8 +52,10 @@ echo "   FAIL      FAIL	      FAIL"
 fi
 fi
 
+if[ $output -ne 7];then
 rm valgrind.txt
 rm helgrind.txt
+fi
 cd - > "/dev/null"
 
 exit $output
