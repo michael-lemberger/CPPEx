@@ -24,7 +24,7 @@ fi
 
 valgrind --tool=helgrind --error-exitcode=1 ./${PROGRAM} ${ARGUMANTS} > helgrind.txt  2>&1
 if [ $? -eq 1 ];then
-output=output+"1"
+output="1"
 fi
 
 echo $table
