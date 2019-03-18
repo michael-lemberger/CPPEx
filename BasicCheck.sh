@@ -8,8 +8,6 @@ output="7"
 FILE=./makefile
 table=" Compilation     Memory leaks     thread race"
 
-if [ -e "$dir/$FILE"  ];
-then
 make > "/dev/null"
 if [ $? -eq 0 ];then
 
