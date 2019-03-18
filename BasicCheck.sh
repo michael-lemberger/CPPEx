@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # everything works=0, helgrind faild=1, valgrind faild=2, valgrind and helgrind faild=3, Compilation failed=7
-dir=$1
-program=$2
-cd $dir
+DIR_PATH=${1?Error: no path given}
+PROGRAM=${2?Error: no program name}
+cd $DIR_PATH
 output="7"
 table=" Compilation     Memory leaks     thread race"
 
@@ -14,7 +14,7 @@ echo "   Fail     FAIL	      FAIL"
 exit 7
 fi
 
-valgrind --leak-check=full --error-exitcode=2 $dir/$program  > valgrind.txt  2>&1
+valgrind --leak-check=full --error-exitcode=2 ./${PROGRAM} ${ARGUMANTS} > valgrind.txt  2>&1
 
 if [ $? -ne 2 ];then
 output="0"
