@@ -16,14 +16,13 @@ exit 7
 fi
 
 valgrind --leak-check=full --error-exitcode=2 ./${PROGRAM} ${ARGUMANTS} > valgrind.txt  2>&1
-
 if [ $? -eq 2 ];then
 check="1"
 fi
 
 valgrind --tool=helgrind --error-exitcode=1 ./${PROGRAM} ${ARGUMANTS} > helgrind.txt  2>&1
 if [ $? -ne 1 ];then
-if [ $check -ne 1];then
+if [ $check -ne 1 ];then
 echo $table
 echo "   PASS     PASS	      PASS"
 exit 0
@@ -34,7 +33,7 @@ exit 2
 fi
 fi
 
-if [ $check -eq 1];then
+if [ $check -eq 1 ];then
 output="3"
 echo $table
 echo "   PASS     FAIL        FAIL"
