@@ -22,7 +22,7 @@ else
 output="2"
 fi
 
-valgrind --tool=helgrind --error-exitcode=1 $dir/$program > helgrind.txt  2>&1
+valgrind --tool=helgrind --error-exitcode=1 ./${PROGRAM} ${ARGUMANTS} > helgrind.txt  2>&1
 if [ $? -eq 1 ];then
 output=output+"1"
 fi
