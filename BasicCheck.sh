@@ -12,7 +12,7 @@ if [ $? -gt 0 ];then
 exit 7
 fi
 
-valgrind --leak-check=full --error-exitcode=2 ./$program  > valgrind.txt  2>&1
+valgrind --leak-check=full --error-exitcode=2 $dir/$program  > valgrind.txt  2>&1
 
 if [ $? -ne 2 ];then
 
