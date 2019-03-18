@@ -9,48 +9,26 @@ table=" Compilation     Memory leaks     thread race"
 
 make > "/dev/null"
 if [ $? -gt 0 ];then
+echo $table
+echo "   Fail     FAIL	      FAIL"
 exit 7
 fi
 
 valgrind --leak-check=full --error-exitcode=2 $dir/$program  > valgrind.txt  2>&1
 
 if [ $? -ne 2 ];then
-
+output="0"
+else
+output="2"
+fi
 
 valgrind --tool=helgrind --error-exitcode=1 $dir/$program > helgrind.txt  2>&1
-
-if [ $? -ne 1 ];then
-
-output="0"
-echo $table
-echo "   PASS     PASS       PASS"
-
-else
-echo $table
-echo "   PASS     PASS       FAIL"
-output="1"
+if [ $? -eq 1 ];then
+output=output+"1"
 fi
 
-else
-valgrind --tool=helgrind --error-exitcode=3 $dir/$program > helgrind.txt  2>&1
-
-if [ $? -ne 3 ];then
-echo $table
-echo "   PASS      FAIL	      PASS"
-output="2"
-
-else
 echo $table
 echo "   PASS      FAIL	      FAIL"
-output="3"
-fi
-fi
-else
-echo $table
-echo "   FAIL      FAIL	      FAIL"
-fi
-fi
-
 
 rm valgrind.txt
 rm helgrind.txt
