@@ -5,11 +5,12 @@ dir=$1
 program=$2
 cd $dir
 output="7"
-FILE=./makefile
 table=" Compilation     Memory leaks     thread race"
 
 make > "/dev/null"
-if [ $? -eq 0 ];then
+if [ $? -gt 0 ];then
+exit 7
+fi
 
 valgrind --leak-check=full --error-exitcode=2 ./$program  > valgrind.txt  2>&1
 
@@ -50,10 +51,10 @@ echo "   FAIL      FAIL	      FAIL"
 fi
 fi
 
-if [ $output -ne 7 ];then
+
 rm valgrind.txt
 rm helgrind.txt
-fi
+
 cd - > "/dev/null"
 
 exit $output
