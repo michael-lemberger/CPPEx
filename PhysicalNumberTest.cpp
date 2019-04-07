@@ -128,8 +128,8 @@ int main() {
     .setname("Other cases")
     .CHECK_OK(++a)
     .CHECK_OK(--e)
-    .CHECK_EQUAL(a.ariel::getValue(), 2)
-    .CHECK_EQUAL(e.ariel::getValue(), 749)
+    .CHECK_EQUAL(a++, 2)
+    .CHECK_EQUAL(e--, 749)
     .CHECK_OUTPUT(-i, "-60[sec]")
 
     .setname("Basic input")
