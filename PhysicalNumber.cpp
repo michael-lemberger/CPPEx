@@ -68,7 +68,7 @@ const PhysicalNumber& PhysicalNumber::operator-=(const PhysicalNumber& other){
 	if(abs(this->getType()-(other.getType()))>=7){
 		throw std::invalid_argument("Error: not the same type!");}
 	else{this->conversion(cpy);}
-	this->setValue(this->value+cpy.getValue());
+	this->setValue(this->value-cpy.getValue());
 	return *this;
 }
 
