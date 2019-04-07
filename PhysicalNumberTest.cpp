@@ -125,11 +125,11 @@ int main() {
     .CHECK_THROWS(c-f2)
     .CHECK_THROWS(c<f)
     
-    .setname("Other edge cases")
+    .setname("Other cases")
     .CHECK_OK(++a)
     .CHECK_OK(--e)
-    .CHECK_EQUAL(a.getValue(), 2)
-    .CHECK_EQUAL(e.getValue(), 749)
+    .CHECK_EQUAL(a->getValue(), 2)
+    .CHECK_EQUAL(e->getValue(), 749)
     .CHECK_OUTPUT(-i, "-60[sec]")
 
     .setname("Basic input")
