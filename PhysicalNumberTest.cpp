@@ -126,8 +126,6 @@ int main() {
     .CHECK_THROWS(c<f)
     
     .setname("Other cases")
-    .CHECK_OK(++a)
-    .CHECK_OK(--e)
     .CHECK_EQUAL(a++, 2)
     .CHECK_EQUAL(e--, 749)
     .CHECK_OUTPUT(-i, "-60[sec]")
