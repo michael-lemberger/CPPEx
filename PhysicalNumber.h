@@ -8,13 +8,14 @@ class PhysicalNumber{
 public:
 
 PhysicalNumber();
-PhysicalNumber(float, ariel::Unit);
+PhysicalNumber(double, ariel::Unit);
+PhysicalNumber(const PhysicalNumber&);
 
 
-void setValue(float f){ //setter
-		this->value = f;
+void setValue(double d){ //setter
+		this->value = d;
 }
-float getValue() const { //getter
+double getValue() const { //getter
 		return value;
 }
 Unit getType() const{ 
@@ -29,9 +30,9 @@ PhysicalNumber operator+() const;
 
 const PhysicalNumber& operator+=(const PhysicalNumber&);
 
-const PhysicalNumber& operator++();
+PhysicalNumber& operator++();
 
-const PhysicalNumber& operator++(int);
+PhysicalNumber operator++(int);
 
 PhysicalNumber operator-(const PhysicalNumber&) const;
 
@@ -39,9 +40,9 @@ PhysicalNumber operator-();
 
 const PhysicalNumber& operator-=(const PhysicalNumber&);
 
-const PhysicalNumber& operator--();
+PhysicalNumber& operator--();
 
-const PhysicalNumber& operator--(int);
+PhysicalNumber operator--(int);
 
 bool operator==(const PhysicalNumber&);
 
@@ -55,12 +56,16 @@ bool operator<(const PhysicalNumber&);
 
 bool operator>(const PhysicalNumber&);
 
+friend istream& operator>>(istream&, const PhysicalNumber&);
+
+friend ostream& operator<<(ostream&, const PhysicalNumber&);
+
+void conversion(PhysicalNumber&) const;
 	private:
-	float value;
+	void Tconvert(int,PhysicalNumber&) const;
+	void Lconvert(int,PhysicalNumber&) const;
+	void Mconvert(int,PhysicalNumber&) const;
+	double value;
 	Unit type;
 };
-
-istream operator>>(istream&, const PhysicalNumber&);
-
-ostream operator<<(ostream&, const PhysicalNumber&);
 }

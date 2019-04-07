@@ -29,42 +29,13 @@ int main() {
     PhysicalNumber d(30, Unit::MIN);
     PhysicalNumber e(750, Unit::KG);
     PhysicalNumber f(1, Unit::TON);
-    PhysicalNumber f2(907, Unit::KG);
-    PhysicalNumber f3(907184, Unit::G);
+    PhysicalNumber f2(1000, Unit::KG);
+    PhysicalNumber f3(1000000, Unit::G);
     PhysicalNumber g(1000, Unit::G);
     PhysicalNumber h(100, Unit::CM);
     PhysicalNumber i(60, Unit::SEC);
-
-
-
+    
     testcase
-    // .setname("Basic output")
-    // .CHECK_OUTPUT(a, "2[km]")
-    // .CHECK_OUTPUT(b, "300[m]")
-    // .CHECK_OUTPUT(c, "2[hour]")
-    // .CHECK_OUTPUT(d, "30[min]")
-    // .CHECK_OUTPUT(e, "750[kg]")
-    // .CHECK_OUTPUT(f, "1[ton]")
-    // .CHECK_OUTPUT(g, "1000[g]")
-    // .CHECK_OUTPUT(h, "100[cm]")
-    // .CHECK_OUTPUT(i, "60[sec]")
-
-    // .setname("Compatible dimensions")
-    // .CHECK_OUTPUT(b+a, "2300[m]")
-    // .CHECK_OUTPUT((a+=b), "2.3[km]")
-    // .CHECK_OUTPUT(a, "2.3[km]")
-    // .CHECK_OUTPUT(a+a, "4.6[km]")
-    // .CHECK_OUTPUT(b-b, "0[m]")
-    // .CHECK_OUTPUT(c, "2[hour]")
-    // .CHECK_OUTPUT(d, "30[min]")
-    // .CHECK_OUTPUT(d+c, "150[min]")
-
-    .setname("Incompatible dimensions")
-    .CHECK_THROWS(a+c)
-    .CHECK_THROWS(a+d)
-    .CHECK_THROWS(b+c)
-    .CHECK_THROWS(b+d)
-
     .setname("Equality between other units")
     .CHECK_EQUAL(a==a2, true)
     .CHECK_EQUAL(a==a3,true)
@@ -81,23 +52,90 @@ int main() {
     .CHECK_EQUAL(a3>=h, true)
     .CHECK_EQUAL(c3!=c2, false)
 
-    // .setname("Other edge cases")
-    // .CHECK_EQUAL(d-c3,0)
-    // .CHECK_THROWS()
-    // .CHECK_THROWS()
-    // .CHECK_EQUAL(++a, 2)
-    // .CHECK_EQUAL(--e, 749)
-    // .CHECK_OUTPUT(-i, "-60[sec]")
+
+  
+    .setname("Basic output")
+    .CHECK_OUTPUT(a, "2[km]")
+    .CHECK_OUTPUT(b, "300[m]")
+    .CHECK_OUTPUT(c, "2[hour]")
+    .CHECK_OUTPUT(d, "30[min]")
+    .CHECK_OUTPUT(e, "750[kg]")
+    .CHECK_OUTPUT(f, "1[ton]")
+    .CHECK_OUTPUT(g, "1000[g]")
+    .CHECK_OUTPUT(h, "100[cm]")
+    .CHECK_OUTPUT(i, "60[sec]")
+
+    .setname("Compatible dimensions")
+    .CHECK_OUTPUT(b+a, "2300[m]")
+    .CHECK_OUTPUT((a+=b), "2.3[km]")
+    .CHECK_OUTPUT(a, "2.3[km]")
+    .CHECK_OUTPUT(a+a, "4.6[km]")
+    .CHECK_OUTPUT(b-b, "0[m]")
+    .CHECK_OUTPUT(c, "2[hour]")
+    .CHECK_OUTPUT(d, "30[min]")
+    .CHECK_OUTPUT(d+c, "150[min]")
+    .CHECK_OUTPUT(a2+a3, "4000[m]")
+   // .CHECK_OUTPUT(a-=h, "2.29900[km]")
+    .CHECK_OUTPUT(++a3, "200001[cm]")
+    .CHECK_OUTPUT(--a, "1.3[km]")
+    .CHECK_OUTPUT(i+c2, "7260[sec]")
+    //.CHECK_OUTPUT(i-=c, "0[sec]")
+    //.CHECK_OUTPUT(i+=i, "60[sec]")
+    .CHECK_OUTPUT(c2+d, "150[min]")
+    .CHECK_OUTPUT(c+c, "4[hour]")
+    //.CHECK_OUTPUT(g+=g, "2000[g]")
+    .CHECK_OUTPUT(f2-g, "999[kg]")
+    .CHECK_OUTPUT(f2+f, "2000[kg]")
+    //.CHECK_OUTPUT(e-=f2, "1064[kg]")
+    .CHECK_OUTPUT(f+f3, "2[ton]")
+    
+    .setname("Incompatible dimensions")
+    .CHECK_THROWS(a+c)
+    .CHECK_THROWS(a+d)
+    .CHECK_THROWS(b+c)
+    .CHECK_THROWS(b+d)
+    .CHECK_THROWS(a3-c3)
+    .CHECK_THROWS(a3+=c2)
+    .CHECK_THROWS(a3-=c)
+    .CHECK_THROWS(a3==g)
+    .CHECK_THROWS(a3-f2)
+    .CHECK_THROWS(a3+=f)
+    .CHECK_THROWS(a3-=c)
+    .CHECK_THROWS(a3+g)
+    .CHECK_THROWS(a3<=f2)
+    .CHECK_THROWS(a3+=f)
+    .CHECK_THROWS(a2-=c3)
+    .CHECK_THROWS(a2+g)
+    .CHECK_THROWS(a2-f2)
+    .CHECK_THROWS(a2!=f)
+    .CHECK_THROWS(a-=c3)
+    .CHECK_THROWS(a+g)
+    .CHECK_THROWS(a<=f2)
+    .CHECK_THROWS(a+=f)
+    .CHECK_THROWS(c3+g)
+    .CHECK_THROWS(c3-f2)
+    .CHECK_THROWS(c3!=f)
+    .CHECK_THROWS(a+g)
+    .CHECK_THROWS(a-f2)
+    .CHECK_THROWS(a+=f)
+    .CHECK_THROWS(d+g)
+    .CHECK_THROWS(d>f2)
+    .CHECK_THROWS(d+=f)
+    .CHECK_THROWS(c+g)
+    .CHECK_THROWS(c-f2)
+    .CHECK_THROWS(c<f)
+    
+    .setname("Other edge cases")
+    .CHECK_OK(++a)
+    .CHECK_OK(--e)
+    .CHECK_EQUAL(a.getValue(), 2)
+    .CHECK_EQUAL(e.getValue(), 749)
+    .CHECK_OUTPUT(-i, "-60[sec]")
 
     .setname("Basic input")
-    // .CHECK_OK(istringstream("700[kg]") >> a)
-    // .CHECK_OUTPUT((a += PhysicalNumber(1, Unit::TON)), "1700[kg]")
-
-    // YOUR TESTS - INSERT AS MANY AS YOU WANT
-
-      .setname("...")
-
-      .print(cout, /*show_grade=*/false);
+    .CHECK_OK(istringstream("700[kg]") >> a)
+    .CHECK_OUTPUT((a += PhysicalNumber(1.0, Unit::TON)), "1700[kg]")
+     .print(cout, /*show_grade=*/false);
       grade = testcase.grade();
     } else {
       testcase.print_signal(signal);
