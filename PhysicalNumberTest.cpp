@@ -203,16 +203,16 @@ int main() {
     .CHECK_THROWS(PhysicalNumber(200,Unit::MIN)<=PhysicalNumber(2.4,Unit::G))
     .CHECK_THROWS(PhysicalNumber(200,Unit::MIN)!=PhysicalNumber(2.4,Unit::G))
 
-    .setname("other operators")
+        .setname("other operators")
     .CHECK_OK(cout<<i)
     .CHECK_OUTPUT(-i, "-120[sec]")
     .CHECK_OUTPUT(+i, "-120[sec]")
     .CHECK_EQUAL((a2++), PhysicalNumber(200000,Unit::CM))
     .CHECK_EQUAL(a2, PhysicalNumber(2.00100,Unit::KM))
-    .CHECK_OK((++(--b++)++))
-    .CHECK_OUTPUT(b, "301[m]")
+    .CHECK_OK((++(++b)))
+    .CHECK_OUTPUT(b, "302[m]")
     .CHECK_OK(b--)
-    .CHECK_OUTPUT(b, "300[m]")
+    .CHECK_OUTPUT(b, "301[m]")
     .CHECK_OK(--(--e))
     .CHECK_OUTPUT(e, "748[kg]")
     .CHECK_OK(++(++e))
@@ -231,8 +231,8 @@ int main() {
     .CHECK_OUTPUT(i, "-120[sec]")
     .CHECK_OUTPUT(-e, "-750[kg]")
     .CHECK_OUTPUT(+e, "-750[kg]")
-    .CHECK_OUTPUT(+b, "300[m]")
-    .CHECK_OUTPUT(-b, "-300[m]")
+    .CHECK_OUTPUT(+b, "301[m]")
+    .CHECK_OUTPUT(-b, "-301[m]")
 
 
    
