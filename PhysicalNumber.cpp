@@ -94,7 +94,7 @@ const PhysicalNumber& PhysicalNumber::operator-=(const PhysicalNumber& other){
     PhysicalNumber PhysicalNumber::operator--(int)
     {
         PhysicalNumber tmp(*this); // copy
-        operator++(); // pre-increment
+        operator--(); // pre-increment
         return tmp;   // return old value
     }
 
