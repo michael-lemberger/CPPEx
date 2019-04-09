@@ -48,9 +48,7 @@ PhysicalNumber PhysicalNumber::operator+() const{
 }
 
 PhysicalNumber PhysicalNumber::operator-(){
-	if(this->getValue()>0)
-		this->setValue(-(this->getValue()));
-	return *this;
+	return PhysicalNumber(-1*(this->getValue()),this->getType());
 }
 
 
