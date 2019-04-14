@@ -77,6 +77,7 @@ const PhysicalNumber& PhysicalNumber::operator-=(const PhysicalNumber& other){
         return *this;
     }
 
+	//learned from this source: https://en.cppreference.com/w/cpp/language/operators
     PhysicalNumber PhysicalNumber::operator++(int)
     {
         PhysicalNumber tmp(*this); // copy
