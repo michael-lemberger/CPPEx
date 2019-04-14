@@ -214,10 +214,10 @@ std::istream& ariel::operator>>(std::istream& is, PhysicalNumber& other){
 	}
 	else{
 	try {
-
+		throw std::invalid_argument("Error: invalid_argument");
 		 } 
 		 catch (const std::exception& e) { 
-
+		 	
 		  }
 	}
 
