@@ -71,4 +71,7 @@ void conversion(PhysicalNumber&) const;
 	double value;
 	Unit type;
 };
+istream& operator>>(istream&, PhysicalNumber&);
+
+ostream& operator<<(ostream&, const PhysicalNumber&);
 }

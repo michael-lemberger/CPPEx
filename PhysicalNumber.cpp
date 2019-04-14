@@ -77,7 +77,6 @@ const PhysicalNumber& PhysicalNumber::operator-=(const PhysicalNumber& other){
         return *this;
     }
 
-	//learned from this source: https://en.cppreference.com/w/cpp/language/operators
     PhysicalNumber PhysicalNumber::operator++(int)
     {
         PhysicalNumber tmp(*this); // copy
@@ -185,7 +184,7 @@ ostream& ariel::operator<<(ostream& stream, const PhysicalNumber& obj){
 std::istream& ariel::operator>>(std::istream& is, PhysicalNumber& other){
 	std::string s;
 	double d;
-	is >>d>>s;
+	is>>d>>s;
 	if(s.compare("[g]")==0){
 		other.setType(0);
 	}
@@ -214,7 +213,13 @@ std::istream& ariel::operator>>(std::istream& is, PhysicalNumber& other){
 		other.setType(22);
 	}
 	else{
-	return is;
+		
+		try {
+			throw std::invalid_argument("Error: invalid_argument");
+		 } 
+		 catch (const std::exception& e) { 
+		 	return is;
+		  }
 	}
 
 	other.setValue(d);
@@ -318,12 +323,3 @@ void PhysicalNumber::conversion(PhysicalNumber& b) const{
 		break;
 	}
 	}
-//add unars operator like p=-a;
-// int main(){
-// PhysicalNumber p(100,Unit::G);
-// PhysicalNumber a(100,Unit::KG);
-// p.conversion(a);
-// return 0;
-// };
-
-
