@@ -2,6 +2,7 @@
 #include <stdexcept>
 #include <stdlib.h>
 #include <iostream>
+#include <ios>
 #include <cmath>
 #include <string>
 using namespace ariel;
@@ -213,7 +214,8 @@ std::istream& ariel::operator>>(std::istream& is, PhysicalNumber& other){
 		other.setType(22);
 	}
 	else{
-		 	return is;
+	is.setstate(std::ios::badbit);
+	return is;
 	}
 
 	other.setValue(d);
@@ -316,4 +318,4 @@ void PhysicalNumber::conversion(PhysicalNumber& b) const{
 		}		
 		break;
 	}
-	}
+}
