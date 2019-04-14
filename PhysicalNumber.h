@@ -21,6 +21,9 @@ double getValue() const { //getter
 Unit getType() const{ 
 		return type; 
 }
+void setType(int i){ 
+		this->type=(Unit)(i); 
+}
 
 const PhysicalNumber& operator=(const PhysicalNumber&);
 
@@ -56,7 +59,7 @@ bool operator<(const PhysicalNumber&);
 
 bool operator>(const PhysicalNumber&);
 
-friend istream& operator>>(istream&, const PhysicalNumber&);
+friend istream& operator>>(istream&, PhysicalNumber&);
 
 friend ostream& operator<<(ostream&, const PhysicalNumber&);
 

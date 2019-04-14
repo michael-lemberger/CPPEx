@@ -203,7 +203,7 @@ int main() {
     .CHECK_THROWS(PhysicalNumber(200,Unit::MIN)<=PhysicalNumber(2.4,Unit::G))
     .CHECK_THROWS(PhysicalNumber(200,Unit::MIN)!=PhysicalNumber(2.4,Unit::G))
 
-        .setname("other operators")
+    .setname("other operators")
     .CHECK_OK(cout<<i)
     .CHECK_OUTPUT((-i), "-120[sec]")
     .CHECK_OUTPUT(+i, "120[sec]")
@@ -235,7 +235,7 @@ int main() {
     .CHECK_OUTPUT(-b, "-301[m]")
 
 
-   
+    
 
     .setname("Basic input")
     .CHECK_OK(istringstream("700[kg]") >> a)

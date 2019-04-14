@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <iostream>
 #include <cmath>
+#include <string>
 using namespace ariel;
 using namespace std;
 PhysicalNumber::PhysicalNumber(double value, Unit type){
@@ -180,7 +181,40 @@ ostream& ariel::operator<<(ostream& stream, const PhysicalNumber& obj){
 	return stream;
 }
 
-std::istream& ariel::operator>>(std::istream& is, const PhysicalNumber& other){
+std::istream& ariel::operator>>(std::istream& is, PhysicalNumber& other){
+	std::string s;
+	char ch;
+	is >> other.value>>s;
+	if(s.compare("[g]")==0){
+		other.setType(0);
+	}
+	else if(s.compare("[kg]")==0){
+		other.setType(1);
+	}
+	else if(s.compare("[ton]")==0){
+		other.setType(2);
+	}
+	else if(s.compare("[cm]")==0){
+		other.setType(10);
+	}
+	else if(s.compare("[m]")==0){
+		other.setType(11);
+	}
+	else if(s.compare("[km]")==0){
+		other.setType(12);
+	}
+	else if(s.compare("[sec]")==0){
+		other.setType(20);
+	}
+	else if(s.compare("[min]")==0){
+		other.setType(21);
+	}
+	else if(s.compare("[hour]")==0){
+		other.setType(22);
+	}
+	else{
+		throw std::invalid_argument("Error: invalid_argument");
+	}
 	return is;
 }
 
