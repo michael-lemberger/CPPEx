@@ -213,12 +213,7 @@ std::istream& ariel::operator>>(std::istream& is, PhysicalNumber& other){
 		other.setType(22);
 	}
 	else{
-	try {
-		throw std::invalid_argument("Error: invalid_argument");
-		 } 
-		 catch (const std::exception& e) { 
-		 	
-		  }
+	return is;
 	}
 
 	other.setValue(d);
