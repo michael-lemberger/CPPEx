@@ -215,6 +215,8 @@ std::istream& ariel::operator>>(std::istream& is, PhysicalNumber& other){
 	else{
 		throw std::invalid_argument("Error: invalid_argument");
 	}
+	other.setValue(d);
+	
 	return is;
 }
 
