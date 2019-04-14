@@ -183,8 +183,8 @@ ostream& ariel::operator<<(ostream& stream, const PhysicalNumber& obj){
 
 std::istream& ariel::operator>>(std::istream& is, PhysicalNumber& other){
 	std::string s;
-	char ch;
-	is >> other.value>>s;
+	double d;
+	is >>d>>s;
 	if(s.compare("[g]")==0){
 		other.setType(0);
 	}
@@ -215,8 +215,8 @@ std::istream& ariel::operator>>(std::istream& is, PhysicalNumber& other){
 	else{
 		throw std::invalid_argument("Error: invalid_argument");
 	}
+
 	other.setValue(d);
-	
 	return is;
 }
 
