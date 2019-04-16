@@ -214,7 +214,6 @@ std::istream& ariel::operator>>(std::istream& is, PhysicalNumber& other){
 		other.setType(22);
 	}
 	else{
-	is.setstate(std::ios::badbit);
 	return is;
 	}
 
